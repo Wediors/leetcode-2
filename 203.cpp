@@ -8,33 +8,23 @@ struct ListNode {
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-        if(head==NULL) return head;
-        
-        if(head->next->next==NULL)
-		{
-			if(head->next==val)
-			{
-				head->next=NULL;
-			}
-		 }
-		 else{
-		 	if(head->next==val)
-			{
-				head->next=head->next->next;
-			}
-			
-		 }
-		if(head->val==val)
+        if(head==NULL) return NULL;
+        ListNode* pointer = head;
+        while(pointer->next!=NULL)
         {
-        	if(head->next!=NULL)
-       		 {
-        	head->val=head->next->val;
-        	head->next=head->next->next;
-        	
+        	if(pointer->next->val==val)
+        	{
+        		pointer->next=pointer->next->next;
 			}
-			
+			else{
+				pointer=pointer->next;
+			}
 		}
-		return removeElements(head->next,val);
+		if(head->val==val)
+		{
+			head=head->next;
+		}
+        return head;
     }
-    ListNode*()
+    
 };
